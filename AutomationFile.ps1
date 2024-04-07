@@ -1,0 +1,1 @@
+Write-Host "My first script. It Is just a test, thanks I will work hard to complete this automation project."
