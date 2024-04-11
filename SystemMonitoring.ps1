@@ -3,3 +3,5 @@ $monitorCPU
 $monitorUsage
 $monitorSpace
 $montorStatus 
+
+Write-host "Hello World"
