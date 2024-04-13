@@ -1,4 +1,5 @@
 #Define the source directory where the PDF files are located
+<<<<<<< HEAD
 $sourceDirectory = "C:\Users\homar\OneDrive\Desktop\"
 
 #Defining the destination of the directory 
@@ -20,3 +21,11 @@ foreach ($file in $pdfFiles) {
 
 Write-Host 
 "You have succesfuly moved the PDF files to folder PDFs"
+=======
+$sourceDirectory = 
+
+
+
+Write-Host 
+"My first script. It Is just a test, thanks I will work hard to complete this automation project."
+>>>>>>> 8abc308 (Defining CPU, DISK, AND STORAGE Thresholds)
