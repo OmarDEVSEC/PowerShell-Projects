@@ -2,7 +2,7 @@
 
 # Define the variables to store thesholds for CPU, DISk, And Memory
 
-$cpuThreshold = 80
+$cpuThreshold = 80 #The capacity that is going to trigger an output of CPU
 $memoryThreshold = 70 
 $spaceThreshold = 50
 
@@ -11,5 +11,5 @@ $spaceThreshold = 50
 $cpuUsage =  (Get-counter '/Processor(_Total)\% Processor Time').CounterSamples.CookedValue
 
 #Variable and code to check memory usage
-
+$memory = Get-CimInstance 
 $memoryUsage = (Get-Counter '\Memory\% Committed Bytes In Use').CounterSamples.CookedValue
