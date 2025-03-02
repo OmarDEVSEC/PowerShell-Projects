@@ -1,8 +1,10 @@
+#PS script for file managment, and moving around bulk files to intended locations
+
 #Define the source directory where the PDF files are located
-$sourceDirectory = "C:\Users\homar\OneDrive\Desktop\"
+$sourceDirectory = "C:\Users\"
 
 #Defining the destination of the directory 
-$destinationDirectory = "C:\Users\homar\OneDrive\Desktop\PDFs"
+$destinationDirectory = "C:\Users\"
 
 #creating the destination folder if one does not exist
 if (-not (Test-Path -Path $destinationDirectory)) {
