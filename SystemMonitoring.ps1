@@ -3,8 +3,8 @@
 # Define the variables to store thesholds for CPU, DISk, And Memory
 
 $cpuThreshold = 80 #The capacity that is going to trigger an output of CPU
-$memoryThreshold = 70 
-$spaceThreshold = 50
+$memoryThreshold = 70  # The capacity that is going to trigger an output of memory
+$spaceThreshold = 50 #The capacity that is going to trigger an output of storage space
 
 #Variable and code to check CPU Usage
 
