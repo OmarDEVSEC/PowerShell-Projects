@@ -25,3 +25,29 @@ $diskUsage = $disk | ForEach-Object{
 
     }
 }
+
+# Alerts are generated if resource threshold is exceeded
+
+if ($cpuUsage -gt $cpuThreshold){
+    Write-Output "Warning: CPU usage is high ($cpuUsage%)"
+}
+
+if ($memoryUsage -gt $memoryThreshold){
+    write-output "warning: Memory usage is high ($memoryUsage%)"
+}
+
+#Each drive will generate an alert if disk usage exceeds threshold
+$diskUsage | ForEach-Object{
+    if ($_.UsedPercentage -gt $spaceThreshold){
+        Write-Output "Warning: Drive $($_.Drive) is $($_.UsedPercentage)% full"
+    }
+
+}
+
+#Give the current system status
+Write-Output "Current System Status:"
+Write-output "CPU usage: $cpuUsage%"
+Write-output "Memory usage: $memoryUsage%"
+$diskUsage | ForEach-Object{
+    Write-Output "Drive $($_.Drive): Free Space: $($_.FreeSpaceGB) GB / Total Space: $($_.TotalSpaceGB) GB ($($_.UsedPercentage)% used)"
+}
