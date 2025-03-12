@@ -23,3 +23,19 @@ param(
         )
 )
 
+#Check if log directory exists
+if (-not(Test-Path -Path $LogPath)){
+    Write-Host "Error: Directory not found: $LogPath" #Lets user know that log directory does not exist
+    exit 1
+}
+
+#Gather log file common extensions
+$LogFiles = Get-ChildItem -Path $LogPath -Recurse -Include *.log,*.txt,*.csv,*.evt,*.evtx
+
+Write-Host "Scanning $($LogFiles.Count)log files..."
+
+
+#Create an Array for results
+$Results = @()
+
+#For processing each log file 
