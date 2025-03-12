@@ -65,4 +65,11 @@ foreach($Pattern in $Patterns){
     }
 }
 
-
+#Finally export logs and return the redsult from scanner script
+if($Results.Count -gt 0){
+    $Results | Export-Csv -Path $OutputFile -NoTypeInformation #Exports results to the output path
+    Write-Host "Found $($Results.Count) incidents. Results saved to $OutputFile"
+    return $Results
+} else{
+    Write-Host "No Security Incidents Found."
+}
