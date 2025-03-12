@@ -39,3 +39,30 @@ Write-Host "Scanning $($LogFiles.Count)log files..."
 $Results = @()
 
 #For processing each log file 
+Foreach ($LogFile in $LogFiles){
+    if($LogFile.Length -eq 0) {continue} #This line skips empty files
+
+#Reads the file content
+$Content = Get-Content -Path $LogFile.FullName -Raw -ErrorAction SilentlyContinue
+if($null -eq $Content) {continue} #Skips if file cannot be read
+
+#Look for patterns in the file
+foreach($Pattern in $Patterns){
+    $Matches = Select-String -InputObject $Content -Pattern $Pattern -AllMatches
+
+    if ($Matches.Matches.Count -gt 0){
+        foreach ($Match in $Matches.Matches){
+            #Lets add to results
+            $Results += [PSCustomObject]@{
+                DateTime = Get-Date -Format "yyyy-MM-dd- HH:mm:ss"
+                LogFile = $LogFile.FullName
+                Pattern = $Pattern
+                MatchText = $Match.Value
+            }
+
+            }
+        }
+    }
+}
+
+
